@@ -3,9 +3,9 @@
 #include<vector>
 using namespace std;
 
-class Player{
+class Hand{
     public:
-        Player(DeckOfard doc);
+        Hand(DeckOfard doc);
         Card get_up_card();
         void take_cards();
         void check_cards();
@@ -16,7 +16,7 @@ class Player{
         int num_of_aces;
         int num_of_aces_count_as_one;
 };
-Player::Player(DeckOfard doc){
+Hand::Hand(DeckOfard doc){
     upcard = doc.get_next();
     downcard = doc.get_next();
     total = (upcard.getNumber() + 1) + (downcard.getNumber() + 1);
@@ -32,13 +32,13 @@ Player::Player(DeckOfard doc){
     }
 
 }
-Card Player::get_up_card(){
+Card Hand::get_up_card(){
     return upcard;
 }
-int Player::get_total(){
+int Hand::get_total(){
     return total;
 }
-void Player::take_cards(DeckOfard doc){
+void Hand::take_cards(DeckOfard doc){
     Card next = doc.get_next();
     total += next.getNumber() + 1;
     if(next.getNumber() + 1 == 1){
@@ -46,7 +46,7 @@ void Player::take_cards(DeckOfard doc){
         total += 10;
     }
 }
-void Player::check_cards(DeckOfard doc){
+void Hand::check_cards(DeckOfard doc){
     if(total > 21){
         if(num_of_aces == num_of_aces_count_as_one){
             total = 0;
