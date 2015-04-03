@@ -25,7 +25,7 @@
 18+
 
 */
-int hard[19][11] = {
+int hard[22][11] = {
 /*  Dealer  0        A       2       3       4       5       6       7       8       9      10
 Player*/
 /*0*/      {0,       0,      0,      0,      0,      0,      0,      0,      0,      0,      0}
@@ -46,7 +46,10 @@ Player*/
 /*15*/   , {0,     HIT,  STAND,  STAND,  STAND,  STAND,  STAND,    HIT,    HIT,    HIT,    HIT}
 /*16*/   , {0,     HIT,  STAND,  STAND,  STAND,  STAND,  STAND,    HIT,    HIT,    HIT,    HIT}
 /*17*/   , {0,   STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND}
-/*18+*/  , {0,   STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND}
+/*18*/  , {0,   STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND}
+/*19*/  , {0,   STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND}
+/*20*/  , {0,   STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND}
+/*21*/  , {0,   STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND}
 };
 int soft[21][11] = {
 /*  Dealer  0        A       2       3       4       5       6       7       8       9      10
@@ -71,9 +74,10 @@ Player*/
 /*17*/   , {0,     HIT,    HIT, DOUBLE, DOUBLE, DOUBLE, DOUBLE,    HIT,    HIT,    HIT,    HIT}
 /*18*/   , {0,     HIT, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE,  STAND,  STAND,    HIT,    HIT}
 /*19*/   , {0,   STAND,  STAND,  STAND,  STAND,  STAND, DOUBLE,  STAND,  STAND,  STAND,  STAND}
-/*20+*/  , {0,   STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND}
+/*20*/  , {0,   STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND}
+/*21*/  , {0,   STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND}
 };
-int split[21][11] = {
+int split[11][11] = {
 /*  Dealer  0        A       2       3       4       5       6       7       8       9      10
 Player*/
 /*0,0*/    {0,       0,      0,      0,      0,      0,      0,      0,      0,      0,      0}
