@@ -1,7 +1,8 @@
 #define HIT 1
 #define STAND 2
-#define DOUBLE 3
-#define SPLIT 4
+#define SPLIT 3
+#define D_S 4
+#define D_H 5
 /*
   0 A 2 3 4 5 6 7 8 9 10 
 0
@@ -25,7 +26,7 @@
 18+
 
 */
-int hard[22][11] = {
+int dealer_hard[22][11] = {
 /*  Dealer  0        A       2       3       4       5       6       7       8       9      10
 Player*/
 /*0*/      {0,       0,      0,      0,      0,      0,      0,      0,      0,      0,      0}
@@ -51,7 +52,7 @@ Player*/
 /*20*/   , {0,   STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND}
 /*21*/   , {0,   STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND}
 };
-int soft[21][11] = {
+int dealer_soft[22][11] = {
 /*  Dealer  0        A       2       3       4       5       6       7       8       9      10
 Player*/
 /*0*/      {0,       0,      0,      0,      0,      0,      0,      0,      0,      0,      0}
@@ -77,7 +78,7 @@ Player*/
 /*20*/   , {0,   STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND}
 /*21*/   , {0,   STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND,  STAND}
 };
-int split[11][11] = {
+int dealer_split[11][11] = {
 /*  Dealer  0        A       2       3       4       5       6       7       8       9      10
 Player*/
 /*0,0*/     {0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0}
