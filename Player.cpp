@@ -9,7 +9,7 @@ class Player : public Human{
         Player(int initial_wager);
         void create_hand(DeckOfCard doc, Card initial_card);
         void add_money(double amount);
-        int get_money();
+        double get_money();
     private:
         double money;
 };
@@ -24,6 +24,6 @@ void Player::add_money(double amount){
     money += amount;
     return;
 }
-int Player::get_money(){
+double Player::get_money(){
     return money;
 }
