@@ -6,21 +6,26 @@
 #include "DealerStrategy.h"
 #include "Player.cpp"
 #include "Dealer.cpp"
+#include "SideBet_LuckyLucky.cpp"
 #define MAX_SPLIT_HANDS 4
 #define BLACKJACK_PAYS 1.5
 using namespace std;
 
 class BlackjackGame{
     public:
-        BlackjackGame(int num_of_decks, double percent_of_cards_to_shuffle);
+        BlackjackGame(int num_of_decks, double percent_of_cards_to_shuffle, int sidebet);
         void add_player(Player new_player);
         void play_round();
         vector<Player> players;
     private:
         DeckOfCard doc;
         bool any_survivors_on_table();
+        int sidebet_index;
+        void check_sidebet(int sidebet_index, Dealer dealer);
+        void LuckyLucky(Dealer dealer);
 };
-BlackjackGame::BlackjackGame(int num_of_decks, double percent_of_cards_to_shuffle){
+BlackjackGame::BlackjackGame(int num_of_decks, double percent_of_cards_to_shuffle, int sidebet){
+    sidebet_index = sidebet;
     doc.set_num_of_decks(num_of_decks);
     doc.set_shuffle_percent(percent_of_cards_to_shuffle);
     //doc.make_up();
@@ -61,6 +66,7 @@ void BlackjackGame::play_round(){
                 #endif
             }
         }
+        check_sidebet(sidebet_index, dealer);
         for(int i = 0; i < players.size(); i++){
             players[i].hands.clear();        
         }
@@ -145,6 +151,7 @@ void BlackjackGame::play_round(){
             }
         }
     }
+    check_sidebet(sidebet_index, dealer);
     for(int i = 0; i < players.size(); i++){
         players[i].hands.clear();        
     }
@@ -159,4 +166,33 @@ bool BlackjackGame::any_survivors_on_table(){
         }
     }
     return false;
+}
+void BlackjackGame::check_sidebet(int sidebet_index, Dealer dealer){
+    if(sidebet_index == 1){
+        LuckyLucky(dealer);
+    }
+}
+void BlackjackGame::LuckyLucky(Dealer dealer){
+    Card card1 = dealer.hands[0].cards[0];
+    for(int i = 0; i < players.size(); i++){
+        Card card2 = players[i].hands[0].cards[0];
+        Card card3 = players[i].hands[0].cards[1];
+        if(suited777(card1, card2, card3)){
+            players[i].add_sidebet_money(200*players[i].get_sidebet_wager());    
+        }else if(suited678(card1, card2, card3)){
+            players[i].add_sidebet_money(100*players[i].get_sidebet_wager());    
+        }else if(unsuited777(card1, card2, card3)){
+            players[i].add_sidebet_money(50*players[i].get_sidebet_wager());    
+        }else if(unsuited678(card1, card2, card3)){
+            players[i].add_sidebet_money(30*players[i].get_sidebet_wager());    
+        }else if(suited21(card1, card2, card3)){
+            players[i].add_sidebet_money(15*players[i].get_sidebet_wager());    
+        }else if(unsuited21(card1, card2, card3)){
+            players[i].add_sidebet_money(3*players[i].get_sidebet_wager());    
+        }else if(any20(card1, card2, card3) || any19(card1, card2, card3)){
+            players[i].add_sidebet_money(2*players[i].get_sidebet_wager());    
+        }else{
+            players[i].add_sidebet_money(-1*players[i].get_sidebet_wager());    
+        }
+    }
 }
