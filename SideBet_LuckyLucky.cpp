@@ -48,8 +48,20 @@ bool unsuited678(Card card1, Card card2, Card card3){
     }
     return false;
 }
+bool sum_up_to(int num1, int num2, int num3, int target){
+    if(num1 + num2 + num3 == target){
+        return true;
+    }
+    if(num1 == 1 || num2 == 1 || num3 == 1){
+        if(num1 + num2 + num3 + 10 == target){
+            return true;
+        }
+    }
+    return false;
+
+}
 bool suited21(Card card1, Card card2, Card card3){
-    if(card1.get_number() + card2.get_number() + card3.get_number() == 21){
+    if(sum_up_to(card1.get_number(), card2.get_number(), card3.get_number(), 21)){
         if(card1.get_suit() == card2.get_suit() && card2.get_suit() == card3.get_suit()){
             return true;
         }
@@ -57,7 +69,7 @@ bool suited21(Card card1, Card card2, Card card3){
     return false;
 }
 bool unsuited21(Card card1, Card card2, Card card3){
-    if(card1.get_number() + card2.get_number() + card3.get_number() == 21){
+    if(sum_up_to(card1.get_number(), card2.get_number(), card3.get_number(), 21)){
         if(!(card1.get_suit() == card2.get_suit() && card2.get_suit() == card3.get_suit())){
             return true;
         }
@@ -65,13 +77,13 @@ bool unsuited21(Card card1, Card card2, Card card3){
     return false;
 }
 bool any20(Card card1, Card card2, Card card3){
-    if(card1.get_number() + card2.get_number() + card3.get_number() == 20){
+    if(sum_up_to(card1.get_number(), card2.get_number(), card3.get_number(), 20)){
         return true;
     }
     return false;
 }
 bool any19(Card card1, Card card2, Card card3){
-    if(card1.get_number() + card2.get_number() + card3.get_number() == 19){
+    if(sum_up_to(card1.get_number(), card2.get_number(), card3.get_number(), 19)){
         return true;
     }
     return false;
