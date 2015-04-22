@@ -2,13 +2,12 @@
 #include<stdio.h>
 #include<time.h>
 #include<vector>
+#include "config.cpp"
 #include "Strategy.h"
 #include "DealerStrategy.h"
 #include "Player.cpp"
 #include "Dealer.cpp"
 #include "SideBet_LuckyLucky.cpp"
-#define MAX_SPLIT_HANDS 4
-#define BLACKJACK_PAYS 1.5
 using namespace std;
 
 class BlackjackGame{
@@ -83,6 +82,7 @@ void BlackjackGame::play_round(){
         printf("=======\n");
         printf("Player check cards, dealer's up card is %d\n", dealer_up_card.get_number());
     #endif
+    check_sidebet(sidebet_index, dealer);
     for(int i = 0; i < players.size(); i++){
         int hand_index = 0;
         while(hand_index < players[i].hands.size()){
@@ -151,7 +151,6 @@ void BlackjackGame::play_round(){
             }
         }
     }
-    check_sidebet(sidebet_index, dealer);
     for(int i = 0; i < players.size(); i++){
         players[i].hands.clear();        
     }

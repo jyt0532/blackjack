@@ -4,8 +4,7 @@
 #include<vector>
 #include "Cards.cpp"
 #include "Strategy.h"
-//#define VERBOSE 1
-#define MAX_SPLIT_HANDS 4
+#include "config.cpp"
 using namespace std;
 #ifndef HAND_CLASS
 #define HAND_CLASS
