@@ -13,6 +13,7 @@ class Player : public Human{
         double get_money();
         int get_sidebet_wager();
         double get_sidebet_money();
+        void set_wager(int new_wager);
     private:
         double money;
         int sidebet_wager;
@@ -42,4 +43,7 @@ double Player::get_sidebet_money(){
 }
 int Player::get_sidebet_wager(){
     return sidebet_wager;
+}
+void Player::set_wager(int new_wager){
+    wager = new_wager;
 }

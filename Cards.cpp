@@ -53,6 +53,9 @@ class DeckOfCard{
         Card get_next();
         void set_num_of_decks(int n);
         void set_shuffle_percent(double percent_of_cards_to_shuffle);
+        void add_running_count(int count);
+        int get_running_count();
+        double get_true_count();
     private:
         int card_index;
         int num_of_decks;
@@ -60,6 +63,9 @@ class DeckOfCard{
         vector<Card> cards;
         void swap_card(Card &card1, Card &card2);
         void create_deck_of_cards(int n);
+        void modify_count(int num);
+        int running_count;
+        float true_count;
 };
 DeckOfCard::DeckOfCard(){
     create_deck_of_cards(1);
@@ -71,6 +77,7 @@ void DeckOfCard::set_shuffle_percent(double percent_of_cards_to_shuffle){
     pocts = percent_of_cards_to_shuffle;
 }
 void DeckOfCard::create_deck_of_cards(int n){
+    running_count = 0;
     num_of_decks = n;
     card_index = 0;
     cards.clear();
@@ -93,19 +100,20 @@ void DeckOfCard::shuffle(){
         int r = rand()%(i+1);
         swap_card(cards[i], cards[r]);
     }
+    running_count = 0;
 }
 void DeckOfCard::make_up(){
-    swap_card(cards[0], cards[41]);//3
+    swap_card(cards[0], cards[44]);//6
     swap_card(cards[1], cards[46]);//8
-    swap_card(cards[2], cards[59]);//8
-    swap_card(cards[3], cards[72]);//8
-    swap_card(cards[4], cards[52]);//1
-    swap_card(cards[5], cards[110]);//7
-    swap_card(cards[6], cards[113]);//10
-    swap_card(cards[7], cards[123]);//7
-    swap_card(cards[8], cards[122]);//6
-    swap_card(cards[9], cards[124]);//8
-    swap_card(cards[10], cards[125]);//9
+    swap_card(cards[2], cards[42]);//4
+    swap_card(cards[3], cards[48]);//10
+    swap_card(cards[4], cards[61]);//10
+    swap_card(cards[5], cards[108]);//5
+    swap_card(cards[6], cards[107]);//4
+    swap_card(cards[7], cards[120]);//4
+    swap_card(cards[8], cards[133]);//4
+    swap_card(cards[9], cards[132]);//3
+    swap_card(cards[10], cards[35]);//10
     swap_card(cards[11], cards[136]);//7
     swap_card(cards[12], cards[138]);//9
     swap_card(cards[13], cards[58]);//7
@@ -134,7 +142,16 @@ Card DeckOfCard::get_next(){
         shuffle();
         card_index = 0;
     }
+    modify_count(nextCard.get_number());
     return nextCard;
+}
+void DeckOfCard::modify_count(int num){
+    if(num <= 6 && num >=  2){
+        add_running_count(1);
+    }else if(num == 1 || num == 10){
+        add_running_count(-1);
+    }
+    return;
 }
 void DeckOfCard::print(){
     for(int i = 0; i < num_of_decks*52; i++){
@@ -142,6 +159,16 @@ void DeckOfCard::print(){
     }
     return;
 }
+void DeckOfCard::add_running_count(int count){
+    running_count += count;
+}
+int DeckOfCard::get_running_count(){
+    return running_count;
+}
+double DeckOfCard::get_true_count(){
+    return (double)running_count/(52*num_of_decks - card_index);
+}
+
 /*
 int main(){
     DeckOfCard doc;

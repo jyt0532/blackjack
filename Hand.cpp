@@ -32,8 +32,13 @@ class Hand{
 Hand::Hand(DeckOfCard &doc, int money_to_bet, Card initial_card){
     is_split = false;
     num_of_cards = 1;
+    num_of_aces = 0;
+    num_of_aces_count_as_one = 0;
     wager = money_to_bet;
     total = initial_card.get_number();
+    if(initial_card.get_number() == 1){
+        num_of_aces++;
+    }
     cards.push_back(initial_card);
 }
 Hand::Hand(DeckOfCard &doc, int money_to_bet){

@@ -16,8 +16,8 @@ class BlackjackGame{
         void add_player(Player new_player);
         void play_round();
         vector<Player> players;
-    private:
         DeckOfCard doc;
+    private:
         bool any_survivors_on_table();
         int sidebet_index;
         void check_sidebet(int sidebet_index, Dealer dealer);
@@ -27,8 +27,8 @@ BlackjackGame::BlackjackGame(int num_of_decks, double percent_of_cards_to_shuffl
     sidebet_index = sidebet;
     doc.set_num_of_decks(num_of_decks);
     doc.set_shuffle_percent(percent_of_cards_to_shuffle);
-    //doc.make_up();
-    doc.shuffle();
+    doc.make_up();
+    //doc.shuffle();
 }
 void BlackjackGame::add_player(Player new_player){
     players.push_back(new_player);
