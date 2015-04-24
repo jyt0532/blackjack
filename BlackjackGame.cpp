@@ -27,15 +27,15 @@ BlackjackGame::BlackjackGame(int num_of_decks, double percent_of_cards_to_shuffl
     sidebet_index = sidebet;
     doc.set_num_of_decks(num_of_decks);
     doc.set_shuffle_percent(percent_of_cards_to_shuffle);
-    doc.make_up();
-    //doc.shuffle();
+    //doc.make_up();
+    doc.shuffle();
 }
 void BlackjackGame::add_player(Player new_player){
     players.push_back(new_player);
     return;
 }
 void BlackjackGame::play_round(){
-    Dealer dealer(0);
+    Dealer dealer;
     dealer.set_strategy(dealer_hard, dealer_soft, dealer_split);
     Hand dealer_hand(doc, 0);
     dealer.hands.push_back(dealer_hand);
