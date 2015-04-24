@@ -1,15 +1,20 @@
 #Blackjack simulation
 
 Should I really split 8-pair against 10?
+
 Why should I hit 12 against 10?
+
 Is counting really helps?
+
 What is the expected return of side bet?
 
 Seeing is believing. You can find all of this answer by yourself.
-It is a simulation tool of blackjack implemented in c++.
 
 #Usage
 
+It is a simulation tool of blackjack implemented in c++. After compile, you can just run it.
+
+If you want to see the detailed hand one by one, uncomment the MACRO VERBOSE defined in config.cpp
 ```
 > g++ simulation.cpp
 > ./a.out
