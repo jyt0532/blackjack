@@ -56,11 +56,17 @@ You can change any strategy you want and see the expected return(or house edge).
 ##Rules
 
 1.Dealer hit on soft 17.(You can modify it on DealerStrategy.h)
+
 2.Nun of decks is assigned in BlackjackGame constructor.
+
 3.Player can double after split.
+
 4.Player can resplit to 4 hands(defined in config.cpp)
+
 5.Player cannot hit split aces or resplit aces.
+
 6.No surrender.
+
 7.Blackjack pays defined in config.cpp
 
 ##Counting
