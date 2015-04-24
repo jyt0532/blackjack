@@ -2,7 +2,7 @@
 
 Should I really split 8-pair against 10?
 
-Why should I hit 12 against 10?
+Why should I hit 16 against 10?
 
 Is counting really helps?
 
