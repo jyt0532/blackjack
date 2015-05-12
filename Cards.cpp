@@ -8,10 +8,6 @@ using namespace std;
 enum Suit{
     club, diamond, heart, spade
 };
-/*enum Number{
-    1,2,3,4,5,6,7,8,9,10,j,q,k
-};*/
-
 class Card{
     public:
         Card(Suit s, int n){
@@ -65,7 +61,7 @@ class DeckOfCard{
         void create_deck_of_cards(int n);
         void modify_count(int num);
         int running_count;
-        float true_count;
+        double true_count;
 };
 DeckOfCard::DeckOfCard(){
     create_deck_of_cards(1);
@@ -105,28 +101,6 @@ void DeckOfCard::shuffle(){
 void DeckOfCard::make_up(){
     swap_card(cards[0], cards[44]);//6
     swap_card(cards[1], cards[46]);//8
-    swap_card(cards[2], cards[42]);//4
-    swap_card(cards[3], cards[48]);//10
-    swap_card(cards[4], cards[61]);//10
-    swap_card(cards[5], cards[108]);//5
-    swap_card(cards[6], cards[107]);//4
-    swap_card(cards[7], cards[120]);//4
-    swap_card(cards[8], cards[133]);//4
-    swap_card(cards[9], cards[132]);//3
-    swap_card(cards[10], cards[35]);//10
-    swap_card(cards[11], cards[136]);//7
-    swap_card(cards[12], cards[138]);//9
-    swap_card(cards[13], cards[58]);//7
-    swap_card(cards[14], cards[152]);//1
-    swap_card(cards[15], cards[85]);//8
-    swap_card(cards[16], cards[98]);//8
-    swap_card(cards[17], cards[111]);//8
-    swap_card(cards[18], cards[107]);//4
-    swap_card(cards[19], cards[184]);//1
-    swap_card(cards[20], cards[109]);//6
-    swap_card(cards[21], cards[133]);//10
-    swap_card(cards[22], cards[126]);//10
-    swap_card(cards[23], cards[125]);//9
 }
 
 void DeckOfCard::swap_card(Card &card1, Card &card2){
@@ -166,18 +140,18 @@ int DeckOfCard::get_running_count(){
     return running_count;
 }
 double DeckOfCard::get_true_count(){
-    return (double)running_count/(52*num_of_decks - card_index);
+    return (double)running_count*52/(52*num_of_decks - card_index);
 }
 
 /*
 int main(){
     DeckOfCard doc;
     doc.set_num_of_decks(8);
-//    doc.print();
-//    doc.shuffle();
+    doc.print();
+    doc.shuffle();
     doc.make_up();
     doc.print();
-//    doc.get_next().printCard();
+    doc.get_next().printCard();
     return 0;
 }*/
 #endif
