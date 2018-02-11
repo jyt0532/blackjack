@@ -1,4 +1,4 @@
-#Blackjack simulation
+# Blackjack simulation
 
 Should I really split 8-pair against 10?
 
@@ -10,7 +10,7 @@ What is the expected return of side bet?
 
 Seeing is believing. You can find all of this answer by yourself.
 
-#Usage
+# Usage
 
 It is a simulation tool of blackjack implemented in c++. After compile, you can just run it.
 
@@ -20,7 +20,7 @@ If you want to see the detailed hand one by one, uncomment the MACRO VERBOSE def
 > ./a.out
 
 ```
-##Strategy
+## Strategy
 
 you have three 2-d array which are: hard, soft and split. The format is understandable as below:
 ```
@@ -53,7 +53,7 @@ Player*/
 ```
 You can change any strategy you want and see the expected return(or house edge).
 
-##Rules
+## Rules
 
 1.Dealer hit on soft 17.(You can modify it on DealerStrategy.h)
 
@@ -69,7 +69,7 @@ You can change any strategy you want and see the expected return(or house edge).
 
 7.Blackjack pays defined in config.cpp
 
-##Counting
+## Counting
 
 Your bet unit is assigned when declaring player. You can define the unit of betting with respect to the running count of the remaining deck.
 ```
@@ -83,9 +83,9 @@ int negative_count[20] =
 /*-10  -11 -12 -13 -14 -15 -16 -17 -18 -19*/
     1,   1,  1,  1,  1,  1,  1,  1,  1,  1};
 ```
-###Note: A positive count gives you about 0.5% advantage against dealer. So you normally raise your bet when the running count is 2 or higher.
+### Note: A positive count gives you about 0.5% advantage against dealer. So you normally raise your bet when the running count is 2 or higher.
 
-##Sidebet 
+## Sidebet 
 Now I implemented the luckylucky sidebet. You can place your sidebet when declaring your player.
 It can be easily implemented by yourself of any blackjack sidebet.
 
